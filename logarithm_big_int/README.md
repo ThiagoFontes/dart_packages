@@ -17,7 +17,7 @@ and the Flutter guide for
 
 A way to calculate logarithm with a bigInt value given a the base also in bigInt, note that the returned value will be also a bigInt so the decimal values will be lost.
 
-To use this package, run `dart pub add password_entropy` to add as a dependency in your pubspec.yaml file or `flutter pub add password_entropy` on a flutter project.
+To use this package, run `dart pub add logarithm_big_int` to add as a dependency in your pubspec.yaml file or `flutter pub add logarithm_big_int` on a flutter project.
 
 
 ## Example

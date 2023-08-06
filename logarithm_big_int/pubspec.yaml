@@ -1,6 +1,6 @@
 name: logarithm_big_int
 description: A way to calculate logarithm with a bigInt value given a the base also in bigInt, note that the returned value will be also a bigInt so the decimal values will be lost.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/ThiagoFontes/dart_packages/tree/main/logarithm_big_int
 
 environment:
