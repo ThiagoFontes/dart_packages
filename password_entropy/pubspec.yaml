@@ -1,14 +1,12 @@
 name: password_entropy
-description: A starting point for Dart libraries or applications.
+description: A passoword entrophy calculation package.
 version: 1.0.0
 repository: https://github.com/ThiagoFontes/dart_packages/tree/main/password_entropy
 
 environment:
   sdk: ^3.0.3
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
 
 dev_dependencies:
   lints: ^2.0.0
