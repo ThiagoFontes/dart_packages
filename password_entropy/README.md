@@ -12,7 +12,7 @@ and the Flutter guide for
 -->
 # password_entropy
 
-![pub package](https://img.shields.io/pub/v/password_entropy.svg)](https://pub.dev/packages/password_entropy)
+![pub package](https://img.shields.io/pub/v/password_entropy.svg)(https://pub.dev/packages/password_entropy)
 
 This package aims to calculate entrophy for plain text passwords, different implementations may have slighty different results from this package.
 
