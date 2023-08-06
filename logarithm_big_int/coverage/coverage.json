@@ -1,0 +1,1 @@
+{"type":"CodeCoverage","coverage":[{"source":"package:logarithm_big_int/src/logarithm_big_int.dart","script":{"type":"@Script","fixedId":true,"id":"libraries/1/scripts/package%3Alogarithm_big_int%2Fsrc%2Flogarithm_big_int.dart","uri":"package:logarithm_big_int/src/logarithm_big_int.dart","_kind":"library"},"hits":[4,1,6,1,8,1,9,1,10,2,12,1,21,1,22,1,27,2]}]}
