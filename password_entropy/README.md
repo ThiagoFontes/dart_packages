@@ -16,7 +16,7 @@ and the Flutter guide for
 
 This package aims to calculate entrophy for plain text passwords, different implementations may have slighty different results from this package.
 
-To use this package, add `password_entropy` as a [dependency in your pubspec.yaml file](https://flutter.dev/platform-plugins/).
+To use this package, add `password_entropy` as a dependency in your pubspec.yaml file.
 
 
 ## Example

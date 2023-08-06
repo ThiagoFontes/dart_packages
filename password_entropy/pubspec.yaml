@@ -1,6 +1,6 @@
 name: password_entropy
 description: A passoword entrophy calculation package.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/ThiagoFontes/dart_packages/tree/main/password_entropy
 
 environment:
