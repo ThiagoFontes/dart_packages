@@ -1,12 +1,10 @@
 import 'dart:math';
 
-class PasswordEntrophy {
-  PasswordEntrophy._();
-
+abstract class PasswordEntrophy {
   static final _uppercaseRange = r'A-Z';
   static final _lowercaseRange = r'a-z';
   static final _numberRange = r'0-9';
-  static final Map<String, int> _rangesMap = {
+  static final Map<String, int> rangesMap = {
     r'!-/': 15,
     r':-@': 7,
     r'[-`': 6,
@@ -29,7 +27,7 @@ class PasswordEntrophy {
 
     int pool = 0;
 
-    for (final entry in _rangesMap.entries) {
+    for (final entry in rangesMap.entries) {
       final regex = '[${entry.key}]';
       if (password.contains(RegExp(regex))) {
         pool += entry.value;

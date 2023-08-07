@@ -3,10 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Testing password entrophy', () {
-    setUp(() {
-      // Additional setup goes here.
-    });
-
     test('same case letters entrophy test', () {
       final mapPasswordsEntropy = <String, double>{
         'abcd': 18.80175887256437,
@@ -70,6 +66,77 @@ void main() {
       for (final entry in mapPasswordsEntropy.entries) {
         expect(entry.key.passwordEntrophy, entry.value);
       }
+    });
+  });
+
+  group('Test password validation', () {
+    test('Check valid symbols', () {
+      final String allValidSymbolsString =
+          '''!"#\$%&'()*+,-./:;<=>?@[\\]^_`{|}~¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789''';
+      final listOfValidCharacters = <String>[];
+
+      for (final entry in PasswordEntrophy.rangesMap.keys) {
+        final startIndex = entry.codeUnits.first;
+        final endIndex = entry.codeUnits.last;
+
+        for (int i = startIndex; i <= endIndex; i++) {
+          listOfValidCharacters.add(String.fromCharCode(i));
+        }
+      }
+
+      final stringFromRegexRanges = listOfValidCharacters.join();
+
+      expect(stringFromRegexRanges, allValidSymbolsString);
+      expect(allValidSymbolsString.validatePassword(), true);
+    });
+
+    test('Check invalid ascii symbols', () {
+      final String asciTableString =
+          String.fromCharCodes(List.generate(256, (index) => index));
+
+      expect(asciTableString.validatePassword(), false);
+    });
+
+    test('PasswordValidation with lenght', () {
+      final String password = 'password';
+
+      expect(password.validatePassword(), true);
+      expect(password.validatePassword(minLenght: 10), false);
+      expect(password.validatePassword(maxLenght: 7), false);
+      expect(password.validatePassword(minLenght: 6, maxLenght: 8), true);
+    });
+
+    test('Check contains functions', () {
+      final string1 = 'string';
+      final string2 = 'AAAABBBB';
+      final string3 = '124151';
+      final string4 = '@!;}])*¨%';
+      final string5 = '!aA3';
+
+      expect(string1.containsNumbers, false);
+      expect(string1.containsLowercase, true);
+      expect(string1.containsUppercase, false);
+      expect(string1.containsSymbols(), false);
+
+      expect(string2.containsNumbers, false);
+      expect(string2.containsLowercase, false);
+      expect(string2.containsUppercase, true);
+      expect(string2.containsSymbols(), false);
+
+      expect(string3.containsNumbers, true);
+      expect(string3.containsLowercase, false);
+      expect(string3.containsUppercase, false);
+      expect(string3.containsSymbols(), false);
+
+      expect(string4.containsNumbers, false);
+      expect(string4.containsLowercase, false);
+      expect(string4.containsUppercase, false);
+      expect(string4.containsSymbols(), true);
+
+      expect(string5.containsNumbers, true);
+      expect(string5.containsLowercase, true);
+      expect(string5.containsUppercase, true);
+      expect(string5.containsSymbols(), true);
     });
   });
 }
