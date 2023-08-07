@@ -2,15 +2,15 @@ import 'package:password_entropy/password_entropy.dart';
 
 void main() {
   //Use via extension method
-  final int? entrophy1 = 'mYpassWord'.passwordEntrophy;
+  final double? entrophy1 = 'mYpassWord'.passwordEntrophy;
   print(entrophy1); // 57.00439718141092
 
   //Will return null for some special characters like '¬' (invalid password)
-  final int? invalidPass = '(¬_¬)'.passwordEntrophy;
+  final double? invalidPass = '(¬_¬)'.passwordEntrophy;
   print(invalidPass); // null
 
   //Use via static method
-  final int? entrophy2 = PasswordEntrophy.entrophy('Password');
+  final double? entrophy2 = PasswordEntrophy.entrophy('Password');
   print(entrophy2); // 45.60351774512874
 
   // Checking if password is valid

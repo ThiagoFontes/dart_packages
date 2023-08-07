@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class PasswordEntrophy {
   PasswordEntrophy._();
 
@@ -15,45 +17,30 @@ class PasswordEntrophy {
     _numberRange: 10,
   };
 
-  static BigInt _bigLog(BigInt value, BigInt logBase) {
-    BigInt partial = value;
-    BigInt integerValue = BigInt.from(0);
-
-    while (partial >= logBase) {
-      partial ~/= logBase;
-      integerValue += BigInt.from(1);
-    }
-
-    return integerValue;
-  }
-
   /// Given an plain text password entropy based on the lenght and pool of matching symbols
   /// This will not garantee your system security, but its a good way to inform the user
   /// about the strenght of the password
   /// retruns null if the password is invalid (has a special character not accounted for in this package)
-  static int? entrophy(String? password) {
+  static double? entrophy(String? password) {
     if (password == null) return 0;
 
     final valid = validatePassword(password);
     if (!valid) return null;
 
-    BigInt pool = BigInt.from(0);
+    int pool = 0;
 
     for (final entry in _rangesMap.entries) {
       final regex = '[${entry.key}]';
       if (password.contains(RegExp(regex))) {
-        pool += BigInt.from(entry.value);
+        pool += entry.value;
       }
     }
 
     final len = password.length;
 
-    final BigInt exp = pool.pow(len);
+    final log2 = len * (log(pool) / log(2));
 
-    // final log2 = log(exp.toInt()) / log(2);
-    final integer = _bigLog(exp, BigInt.from(2));
-
-    return integer.toInt();
+    return log2;
   }
 
   /// Not all ascii symbols are allowed in passwords with this package
@@ -120,7 +107,7 @@ extension PasswordEntrophyExtension on String? {
   /// Given an plain text password entropy based on the lenght and pool of matching symbols
   /// This will not garantee your system security, but its a good way to inform the user
   /// about the strenght of the password
-  int? get passwordEntrophy => PasswordEntrophy.entrophy(this);
+  double? get passwordEntrophy => PasswordEntrophy.entrophy(this);
 
   /// Not all ascii symbols are allowed in passwords with this package
   /// return either true of false if all characters are allowed
