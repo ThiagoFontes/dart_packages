@@ -65,7 +65,7 @@ class PasswordEntrophy {
     final stringBuffer = StringBuffer();
 
     stringBuffer.write(r'^[');
-    for (final value in _rangesMap.keys) {
+    for (final value in rangesMap.keys) {
       stringBuffer.write(value);
     }
     stringBuffer.write(r']+$');
@@ -79,26 +79,26 @@ class PasswordEntrophy {
 extension PasswordEntrophyExtension on String? {
   ///true if the string contains at least one number
   bool get containsNumbers =>
-      this?.contains(RegExp(PasswordEntrophy._numberRange)) ?? false;
+      this?.contains(RegExp('[${PasswordEntrophy._numberRange}]')) ?? false;
 
   ///true if the string contains at least one lowercase character
   bool get containsLowercase =>
-      this?.contains(RegExp(PasswordEntrophy._lowercaseRange)) ?? false;
+      this?.contains(RegExp('[${PasswordEntrophy._lowercaseRange}]')) ?? false;
 
   ///true if the string contains at least one lowercase character
   bool get containsUppercase =>
-      this?.contains(RegExp(PasswordEntrophy._uppercaseRange)) ?? false;
+      this?.contains(RegExp('[${PasswordEntrophy._uppercaseRange}]')) ?? false;
 
   ///true if the string contains at least one valid symbol
   bool containsSymbols({String? regex}) {
-    final symbols = PasswordEntrophy._rangesMap;
+    final symbols = PasswordEntrophy.rangesMap;
     symbols
       ..remove(PasswordEntrophy._uppercaseRange)
       ..remove(PasswordEntrophy._lowercaseRange)
       ..remove(PasswordEntrophy._numberRange);
 
     final anySymbol = symbols.keys.any(
-      (element) => this?.contains(RegExp(regex ?? element)) ?? false,
+      (element) => this?.contains(RegExp('[${regex ?? element}]')) ?? false,
     );
 
     return anySymbol;
