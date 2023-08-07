@@ -18,7 +18,10 @@ This package aims to calculate entrophy for plain text passwords, different impl
 
 To use this package, add `password_entropy` as a dependency in your pubspec.yaml file.
 
+List of characteres that are considered valid in this package:
+`!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`
 
+You don't need to provide this list, and to check if a password is valid the function `validatePassword` can be used as demonstrated in the example bellow.
 ## Example
 
 ```dart

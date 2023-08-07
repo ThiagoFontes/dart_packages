@@ -1,13 +1,12 @@
 name: password_entropy
 description: This package aims to calculate entrophy for plain text passwords, different implementations may have slighty different results from this package.
-version: 1.0.1
+version: 2.0.0
 repository: https://github.com/ThiagoFontes/dart_packages/tree/main/password_entropy
 
 environment:
   sdk: ^3.0.3
 
 dependencies:
-  logarithm_big_int: ^1.0.1
 
 dev_dependencies:
   lints: ^2.0.0
