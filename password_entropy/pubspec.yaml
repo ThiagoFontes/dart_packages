@@ -1,6 +1,6 @@
 name: password_entropy
 description: This package aims to calculate entrophy for plain text passwords, different implementations may have slighty different results from this package.
-version: 2.0.0
+version: 2.0.1
 repository: https://github.com/ThiagoFontes/dart_packages/tree/main/password_entropy
 
 environment:
